@@ -21,6 +21,28 @@ boss1がリーダーシップを取り、presidentが傍聴者として参加す
 
 詳細は [MULTI_PROJECT_GUIDE.md](./MULTI_PROJECT_GUIDE.md) をご参照ください。
 
+#### 🎮 複数プロジェクト管理コマンド
+```bash
+# プロジェクト作成
+./project-manager.sh create webapp-frontend "フロントエンド開発" 3
+
+# ダッシュボード確認
+./project-manager.sh dashboard
+
+# プロジェクト開始・停止
+./project-manager.sh start webapp-frontend
+./project-manager.sh stop webapp-frontend
+
+# セッションアタッチ
+./project-manager.sh attach webapp-frontend
+
+# 会議システム
+./project-manager.sh meeting webapp-frontend init "スプリント計画"
+
+# 複数プロジェクト並列稼働デモ
+./demo-multi-project.sh
+```
+
 ### 👥 エージェント構成
 
 ```
