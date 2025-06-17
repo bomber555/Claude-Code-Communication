@@ -1,10 +1,37 @@
 # 🤖 Tmux Multi-Agent Communication Demo
 
-Agent同士がやり取りするtmux環境のデモシステム
+Agent同士がやり取りするtmux環境のデモシステム + tmux OAuth認証修正ツール
 
 ## 🎯 デモ概要
 
 PRESIDENT → BOSS → Workers の階層型指示システムを体感できます
+
+## 🔧 tmux + Claude Code OAuth認証修正ツール
+
+tmux（ティーマックス）セッション内でClaude Codeを起動した際に、OAuth認証が正常に動作せずAWS Bedrockにフォールバックしてしまう問題を解決するためのスクリプト集が含まれています。
+
+### 問題の背景
+- **直接ターミナル起動**: OAuth認証が正常動作 ✅
+- **tmuxセッション内**: 環境変数が引き継がれず、AWS Bedrockにフォールバック ❌
+
+### 含まれる修正ツール
+
+#### `fix-tmux-auth.sh`
+既存のtmuxセッションに対して、Claude Code OAuth認証に必要な環境変数を同期するスクリプト。
+
+**使用方法:**
+```bash
+./fix-tmux-auth.sh
+```
+
+#### `tmux-claude-setup.sh`
+新しいClaude Codeプロジェクト用tmuxセッションを正しい環境変数で作成するためのヘルパー関数。
+
+**使用方法:**
+```bash
+source tmux-claude-setup.sh
+create_claude_project_session "project-name" "/path/to/project"
+```
 
 ### 👥 エージェント構成
 
